@@ -1,20 +1,21 @@
-#ifndef easyfind_HPP
-#define easyfind_HPP
+#ifndef EASYFIND_HPP
+# define EASYFIND_HPP
 
-#include <iostream>
 #include <algorithm>
 
-template <typename T>
-
-class easyfind {
+class nonExistantElementException : public std::exception{
 	public:
-		easyfind();
-		easyfind(T par1, int par2);
-		easyfind(const easyfind& other);
-		easyfind& operator=(const easyfind& other);
-		~easyfind();
+		const char* what() const throw() {return "Element doesn't exists\n";};
 };
 
-// #include "easyfind.tpp"
+template <typename T>
+typename T::iterator	easyfind(T &elems, int el)
+{
+	typename T::iterator it = std::find(elems.begin(), elems.end(), el);
+	if (it == elems.end())
+		throw nonExistantElementException();
+	else
+		return it;
+}
 
 #endif
