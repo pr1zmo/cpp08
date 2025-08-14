@@ -108,18 +108,27 @@ int main()
 	}
 
 	// *vector<string> — expected compile-time error
+	// try
 	// {
 	// 	std::vector<std::string> vs;
 	// 	vs.push_back("1");
 	// 	vs.push_back("2");
 	// 	std::vector<std::string>::iterator it = easyfind(vs, 2); // error: no operator==(std::string, int)
 	// }
-
-	// *map<int,int> — expected compile-time error
+	// catch (const std::exception& e)
 	// {
+	// 	std::cout << "vector<string>: " << e.what() << "\n";
+	// }
+
+	// // *map<int,int> — expected compile-time error
+	// try{
 	// 	std::map<int,int> m;
 	// 	m[1] = 10;
 	// 	std::map<int,int>::iterator it = easyfind(m, 1); // error: no nested iterator over mapped_type
+	// }
+	// catch (const std::exception& e)
+	// {
+	// 	std::cout << "map<int,int>: " << e.what() << "\n";
 	// }
 
 	return 0;
